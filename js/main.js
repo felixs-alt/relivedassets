@@ -1,15 +1,12 @@
-// Hello there!
-//
-// If you want to add my games to your site, please reach out at my email: echo-the-coder@tuta.io, or discord: 3kh0_#6969
-
-
-
 // ====================================
 // SCRIPT INJECTION
 // ====================================
-const gogascript27 = document.createElement("script");
-gogascript27.setAttribute("defer", "");
-gogascript27.setAttribute("src", "https://static.cloudflareinsights.com/beacon.min.js");
-gogascript27.setAttribute("data-cf-beacon", '{"token": "72d0b1a399144c9ab4f72e6da597a9a7"}');
-document.body.append(gogascript27);
-                    
+const addScript = async src => new Promise((resolve, reject) => {
+    const el = document.createElement('script');
+    el.src = src;
+    el.addEventListener('load', resolve);
+    el.addEventListener('error', reject);
+    document.body.append(el);
+});
+await addScript('https://cdn.socket.io/4.8.0/socket.io.min.js');
+await addScript('/js/socket.js');
